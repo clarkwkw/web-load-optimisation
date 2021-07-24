@@ -16,6 +16,10 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
+const RedirectHome = () => {
+    return <Redirect to="/" />;
+}
+
 const RoutesProvider = () => {
     const classes = useStyles();
     return (
@@ -24,6 +28,7 @@ const RoutesProvider = () => {
                 <Switch>
                     <Route exact path='/' component={HomeScreen}/>
                     <Route exact path='/about' component={AboutScreen}/>
+                    <Route component={RedirectHome} />
                 </Switch>
             </Suspense>
         </Container>
