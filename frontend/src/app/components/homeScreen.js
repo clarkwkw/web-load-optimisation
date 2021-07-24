@@ -2,9 +2,9 @@ import React from 'react';
 
 import PropTypes from "prop-types";
 import {Container, Grid, Paper, Typography, Zoom, CardMedia} from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import {makeStyles} from '@material-ui/core/styles';
 
+import ExternalLink from './shared/externalLink';
 import Image1 from '../../assets/comic/comic_1.png';
 import Image2 from '../../assets/comic/comic_2.png';
 import Image3 from '../../assets/comic/comic_3.png';
@@ -87,7 +87,7 @@ export default function HomeScreen() {
                                   alignItems="center">
                                 {_.map(images, (img, index) => <SingleCell key={index} delay={(index+1)*500} img={img} />)}
                             </Grid>
-                            <Typography>Credit: <Link to="https://www.pinterest.com/pin/480618591458128944/">Pinterest</Link></Typography>
+                            <Typography>Credit: <ExternalLink url="https://www.pinterest.com/pin/480618591458128944/">Pinterest</ExternalLink></Typography>
                         </Container>
                     </Grid>
                 </Paper>
