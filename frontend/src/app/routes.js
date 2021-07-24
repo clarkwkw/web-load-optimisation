@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { withRouter } from "react-router";
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from "prop-types";
@@ -8,13 +8,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import LoadingBackdrop from './components/shared/loadingBackdrop';
 import HomeScreen from './components/homeScreen';
-import AboutScreen from './components/aboutScreen';
-import DummyScreen1 from './components/dummyScreen1';
-import DummyScreen2 from './components/dummyScreen2';
-import DummyScreen3 from './components/dummyScreen3';
-import DummyScreen4 from './components/dummyScreen4';
-import DummyScreen5 from './components/dummyScreen5';
-import DummyScreen6 from './components/dummyScreen6';
+
+const AboutScreen = lazy(() => import('./components/aboutScreen'));
+const DummyScreen1 = lazy(() => import('./components/dummyScreen1'));
+const DummyScreen2 = lazy(() => import('./components/dummyScreen2'));
+const DummyScreen3 = lazy(() => import('./components/dummyScreen3'));
+const DummyScreen4 = lazy(() => import('./components/dummyScreen4'));
+const DummyScreen5 = lazy(() => import('./components/dummyScreen5'));
+const DummyScreen6 = lazy(() => import('./components/dummyScreen6'));
 
 const useStyles = makeStyles(() => ({
     root: {
