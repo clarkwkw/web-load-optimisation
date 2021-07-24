@@ -8,8 +8,7 @@ import ExternalLink from './shared/externalLink';
 import Image1 from '../../assets/comic/comic_1.png';
 import Image2 from '../../assets/comic/comic_2.png';
 import Image3 from '../../assets/comic/comic_3.png';
-
-import _ from 'lodash';
+import _ from '../lodash-wrapper';
 
 const images = [
     Image1,
