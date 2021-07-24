@@ -1,0 +1,16 @@
+{
+    "buildpacks": [
+        {
+            "url": "https://github.com/timanovsky/subdir-heroku-buildpack"
+        },
+        {
+            "url": "heroku/nodejs"
+        }
+    ],
+    "formation": {
+        "web": {
+          "quantity": 1,
+          "size": "hobby"
+        }
+    }
+}
