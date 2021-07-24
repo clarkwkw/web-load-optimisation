@@ -47,8 +47,7 @@ export default function Footer() {
             <Grid container className={classes.root}>
                 <Grid item xs={12} sm={4} className={classes.grid}>
                     <Typography className={classes.title}>Links</Typography>
-                    <MenuLink to='/page1'>Page 1</MenuLink>
-                    <MenuLink to='/page2'>Page 2</MenuLink>
+                    <MenuLink to='/about'>About Doge</MenuLink>
                 </Grid>
                 <Grid item xs={12} sm={4} className={classes.grid}>
                     <Typography className={classes.title}>Contact Us</Typography>

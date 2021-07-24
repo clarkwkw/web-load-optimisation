@@ -31,13 +31,13 @@ const style = theme => ({
     toolBar: {
         paddingTop: 30,
         paddingBottom: 60,
-        background: `url(${Bg_1}) no-repeat scroll -30px -180px`,
+        background: `url(${Bg_1}) no-repeat scroll -18px -170px`,
         backgroundSize: `400px`,
         [theme.breakpoints.down('sm')]: {
             paddingTop: 10,
             paddingBottom: 0,
-            backgroundSize: `200px`,
-            background: `url(${Bg_1}) no-repeat scroll 6px -90px`,
+            backgroundSize: `210px`,
+            background: `url(${Bg_1}) no-repeat scroll 8px -79px`,
         },
     },
     sectionDesktop: {
@@ -153,8 +153,7 @@ MenuLinkMobile.propTypes = {
 const createMenuLinks = LinkComponent => {
     return (
         <>
-            <LinkComponent to="/page1" text="Page 1"/>
-            <LinkComponent to="/page2" text="Page 2"/>
+            <LinkComponent to="/about" text="About Doge"/>
         </>
     );
 }
@@ -225,7 +224,6 @@ Header.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    authAction: PropTypes.object.isRequired
 }
 
 export default withRouter(withStyles(style, {withTheme: true})(Header));
