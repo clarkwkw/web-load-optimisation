@@ -1,5 +1,7 @@
 import map from "lodash/map";
 
-export default {
+const wrapped = {
     map,
 };
+
+export default wrapped;
