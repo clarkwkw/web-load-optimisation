@@ -13,6 +13,7 @@ import reportWebVitals from './reportWebVitals';
 import RoutesProvider from './app/routes';
 
 const App = () => {
+  console.log("Env: ", process.env.NODE_ENV);
   return (
       <ThemeProvider theme={themeDark}>
           <CssBaseline/>

@@ -71,7 +71,7 @@ const SingleCell = props => {
 }
 SingleCell.propTypes = {
     delay: PropTypes.number.isRequired,
-    img: PropTypes.element.isRequired,
+    img: PropTypes.string.isRequired,
 }
 
 export default function HomeScreen() {
@@ -81,7 +81,7 @@ export default function HomeScreen() {
         <Grid container spacing={3}>
             <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                    <Grid item justifyContent="center">
+                    <Grid item>
                         <Container>
                             <Grid container spacing={3} direction="column" justifyContent="space-evenly"
                                   alignItems="center">
