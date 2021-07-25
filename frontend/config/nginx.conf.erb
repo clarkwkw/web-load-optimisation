@@ -38,7 +38,7 @@ http {
 
         location / {
             <% @chost=ENV["HEROKU_APP_NAME"]+".herokuapp.com" %>
-            <% if ENV["CANONICAL_HOST"].length > 0 %><% @chost=ENV["CANONICAL_HOST"] %><% end %>
+            <% if ENV["CANONICAL_HOST"] %><% @chost=ENV["CANONICAL_HOST"] %><% end %>
             if ($http_x_forwarded_proto != "https") {
               return 301 https://$host$request_uri;
             }
