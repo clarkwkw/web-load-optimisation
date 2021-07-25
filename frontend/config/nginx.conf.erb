@@ -43,7 +43,7 @@ http {
               return 301 https://$host$request_uri;
             }
             if ($host != <%= @chost %>) {
-              return 301 $http_x_forwarded_proto://<%= chost %>$request_uri;
+              return 301 $http_x_forwarded_proto://<%= @chost %>$request_uri;
             }
             try_files $uri index.html;
         }
