@@ -1,0 +1,49 @@
+daemon off;
+worker_processes <%= ENV['NGINX_WORKERS'] || 4 %>;
+
+events {
+    use epoll;
+    accept_mutex on;
+    worker_connections <%= ENV['NGINX_WORKER_CONNECTIONS'] || 1024 %>;
+}
+
+http {
+    gzip on;
+    gzip_comp_level 2;
+    gzip_min_length 512;
+    gzip_types text/plain text/html text/css application/json application/javascript application/x-javascript text/javascript text/xml application/xml application/rss+xml application/atom+xml application/rdf+xml;
+    gzip_vary on;
+    gzip_proxied any;
+
+    server_tokens off;
+    access_log off;
+
+    log_format l2met 'measure#nginx.service=$request_time request_id=$http_x_request_id';
+    error_log <%= ENV['NGINX_ERROR_LOG_PATH'] || 'logs/nginx/error.log' %>;
+
+    include mime.types;
+    default_type application/octet-stream;
+    sendfile on;
+
+    # Must read the body in 5 seconds.
+    client_body_timeout 5;
+
+    server {
+        listen <%= ENV["PORT"] %>;
+        server_name _;
+        keepalive_timeout 5;
+        add_header 'Access-Control-Allow-Origin' 'https://<%= ENV["CANONICAL_HOST"] %>';
+        add_header 'Strict-Transport-Security' 'max-age=31536000; includeSubDomains' always;
+        root build;
+
+        location / {
+            if ($http_x_forwarded_proto != "https") {
+              return 301 https://$host$request_uri;
+            }
+            if ($host != <%= ENV["CANONICAL_HOST"] %>) {
+              return 301 $http_x_forwarded_proto://<%= ENV["CANONICAL_HOST"] %>$request_uri;
+            }
+            try_files $uri index.html
+        }
+    }
+}
