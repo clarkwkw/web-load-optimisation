@@ -37,7 +37,7 @@ http {
         root build;
 
         location / {
-            <% @chost=ENV["HEROKU_APP_NAME"]+".herokuapp.com" %>
+            <% if ENV["HEROKU_APP_NAME"] %><% @chost=ENV["HEROKU_APP_NAME"]+".herokuapp.com" %><% end %>
             <% if ENV["CANONICAL_HOST"] %><% @chost=ENV["CANONICAL_HOST"] %><% end %>
             if ($http_x_forwarded_proto != "https") {
               return 301 https://$host$request_uri;
