@@ -37,13 +37,15 @@ http {
         root build;
 
         location / {
+            <% @chost=ENV["HEROKU_APP_NAME"].herokuapp.com %>
+            <% if ENV["CANONICAL_HOST"].length > 0 %><% @chost=ENV["CANONICAL_HOST"] %><% end %>
             if ($http_x_forwarded_proto != "https") {
               return 301 https://$host$request_uri;
             }
-            if ($host != <%= ENV["CANONICAL_HOST"] %>) {
-              return 301 $http_x_forwarded_proto://<%= ENV["CANONICAL_HOST"] %>$request_uri;
+            if ($host != <%= @chost %>) {
+              return 301 $http_x_forwarded_proto://<%= chost %>$request_uri;
             }
-            try_files $uri index.html
+            try_files $uri index.html;
         }
     }
 }
