@@ -178,7 +178,7 @@ const Header = (props) => {
         <Container className={classes.container}>
             <Toolbar className={classes.toolBar}>
                 <MenuLink to='/' className={classes.logoButton}
-                            text={<Image src="/icons/logo.png" className={classes.logo}/>}/>
+                            text={<Image src={`${process.env.PUBLIC_URL}/icons/logo.png`} className={classes.logo}/>}/>
                 <div className={classes.grow}/>
                 <div className={classes.sectionDesktop}>
                     {createMenuLinks(MenuLink)}
